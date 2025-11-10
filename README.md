@@ -1,6 +1,9 @@
 # profetch
 profetch is like neofetch but for projects
 
+
+![example](example.png)
+
 ## installation
 
 ```bash
