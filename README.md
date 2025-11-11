@@ -1,4 +1,6 @@
 # profetch
+![license](https://img.shields.io/badge/license-MIT-blue.svg)
+
 profetch is like neofetch but for projects
 
 
