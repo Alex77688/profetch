@@ -58,7 +58,7 @@ func FetchGithubInfo(root string, colorCode int) []string{
 	} else {
 		result[4] = Format("License", "-", colorCode)
 	}
-	result[5] = Format("URL: ", repoURL, colorCode)
+	result[5] = Format("URL", strings.TrimSpace(repoURL), colorCode)
 
 	return result
 }
