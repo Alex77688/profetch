@@ -15,7 +15,7 @@ func main() {
 	if rand.Intn(50) == 0 {
 		fmt.Println("sorry, profetch decided to not work this time D:");
 		os.Exit(67);
-	}
+	} 
 
 	logo, ok := FetchLogo(".");
 	info, err := info.FetchInfo(".", rand.Intn(37 - 31) + 31);
