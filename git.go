@@ -6,28 +6,30 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func FetchGitInfo(root string, colorCode int) []string {
-	commits, lastCommit, contributors, version, firstCommit, err := fetchGit(root);
+	commits, lastCommit, contributors, version, age, err := fetchGit(root);
 	if !err {
 		return make([]string, 0)
 	}
 
+
 	res := make([]string, 6)
 	
-	res[1] = ColorText("Number of commits: ", colorCode) + strconv.Itoa(commits)
-	res[2] = ColorText("Last commit: ", colorCode) + lastCommit
-	res[3] = ColorText("Number of contributors: ", colorCode) + strconv.Itoa(contributors) 
-	res[4] = ColorText("First commit date: ", colorCode) + firstCommit
-	res[5] = ColorText("Version: ", colorCode) + version
+	res[1] = Format("Commits", commits, colorCode)
+	res[2] = Format("Last commit", lastCommit, colorCode)
+	res[3] = Format("Contributors", contributors, colorCode)
+	res[4] = Format("Repo age", FormatDuration(age), colorCode)
+	res[5] = Format("Version", version, colorCode)
 	return res
 }
 
-func fetchGit(root string) (int, string, int, string, string, bool) {
+func fetchGit(root string) (int, string, int, string, time.Duration, bool) {
 	path, _ := filepath.Abs(filepath.Join(root, ".git"))
 	if _, err := os.Stat(path); os.IsNotExist(err) {
-		return 0, "", 0, "", "" ,false 
+		return 0, "", 0, "", time.Millisecond ,false 
 	}
 
 	git := func(command ...string) (string, error) {
@@ -38,36 +40,41 @@ func fetchGit(root string) (int, string, int, string, string, bool) {
 	}
 	_, err := exec.Command("git", "rev-parse", "--verify", "HEAD").CombinedOutput()
 	if err != nil {
-		return 0, "", 0, "", "", false
+		return 0, "", 0, "", time.Millisecond, false
 	}
 	commits, err := git("rev-list", "--count", "HEAD")
 	if err != nil {
-		return 0, "", 0, "", "", false
+		commits = "0"
 	}
 	lastCommit, err := git("log", "-1", "--format=%s")
 	if err != nil {
-		return 0, "", 0, "", "", false
+		lastCommit = "-"
 	}
 	output, err := git("log", "--format=%an") // returns string
 
 	if err != nil {
-		return 0, "", 0 , "", "", false
+		output = ""
 	}
 
 	version, err := git("describe", "--tags")
 	if err != nil {
-		return 0, "", 0,"","", false
+		version = "-"
 	}
 
-	allCommits, err := git("log", "--reverse", "--format=%cd")
+	allCommits, err := git("log", "--reverse", "--format=%ct")
 	if err != nil {
-		return 0, "", 0, "", "", false
+		allCommits = ""
 	}
 
-	firstCommit := strings.Split(strings.TrimSpace(allCommits), "\n")[0]
+	lines := strings.Split(strings.TrimSpace(allCommits), "\n")
 
+    ts, _ := strconv.Atoi(lines[0])
+    
 
-	lines := strings.Split(strings.TrimSpace(output), "\n")
+    created := time.Unix(int64(ts), 0)
+    age := time.Since(created)
+
+	lines = strings.Split(strings.TrimSpace(output), "\n")
 	seen := make(map[string]struct{})
 	var result []string
 
@@ -80,7 +87,7 @@ func fetchGit(root string) (int, string, int, string, string, bool) {
 	contributors := len(result)
 	numCommits, err := strconv.Atoi(strings.TrimSpace(commits))
 	if err != nil {
-		return 0, "", 0, "", "", false
+		numCommits = 0;
 	}
-	return numCommits, strings.TrimSpace(lastCommit), contributors, strings.TrimSpace(version) ,firstCommit, true
+	return numCommits, strings.TrimSpace(lastCommit), contributors, strings.TrimSpace(version) ,age, true
 }

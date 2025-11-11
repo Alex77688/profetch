@@ -42,14 +42,23 @@ func FetchGithubInfo(root string, colorCode int) []string{
 	} else {
 		forks = "0" // or "-"
 	}
-
-	result := make([]string, 4);
-	result[1] = ColorText("Stars: ", colorCode) + stars
-	result[2] = ColorText("Forks: ", colorCode) + forks
-	if data["license"] != nil {
-			result[3] = ColorText("License: ", colorCode) + data["license"].(map[string]interface{})["name"].(string)
-
+	var openIssues string
+	if openIssuesVal, ok := data["open_issues_count"].(float64); ok {
+		openIssues = fmt.Sprintf("%.0f", openIssuesVal)
+	} else {
+		openIssues = "0"
 	}
+
+	result := make([]string, 6);
+	result[1] = Format("Stars", stars, colorCode)
+	result[2] = Format("Forks", forks, colorCode)
+	result[3] = Format("Issues", openIssues, colorCode)
+	if data["license"] != nil {
+		result[4] = Format("License", data["license"].(map[string]interface{})["name"].(string), colorCode)
+	} else {
+		result[4] = Format("License", "-", colorCode)
+	}
+	result[5] = Format("URL: ", repoURL, colorCode)
 
 	return result
 }

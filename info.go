@@ -8,7 +8,6 @@ import (
 	"strconv"
 
 	ignore "github.com/sabhiram/go-gitignore"
-	"github.com/tejtex/profetch/src/utils"
 )
 
 var allowedExts = map[string]string{
@@ -60,7 +59,7 @@ func FetchInfo(root string, colorCode int) ([]string, error) {
 func fetchProjName(root string, colorCode int ) ([]string, error) {
 	absPath, _ := filepath.Abs(root)
 	dirName := filepath.Base(absPath)
-	res := []string{utils.ColorText(utils.ColorText(utils.ColorText(dirName, 1), 4), colorCode), ""}
+	res := []string{ColorText(ColorText(ColorText(dirName, 1), 4), colorCode), ""}
 	return res, nil
 }
 func fetchLangs(root string, colorCode int) ([]string, error) {
@@ -83,13 +82,13 @@ func fetchLangs(root string, colorCode int) ([]string, error) {
 	// Format output
 	var res []string
 	res = append(res, "")
-	res = append(res, utils.ColorText("Languages:", colorCode))
+	res = append(res, ColorText("Languages:", colorCode))
 	total := 0
 	for _, count := range langCount {
 		total += count
 	}
 	for lang, count := range langCount {
-		line := "  " + utils.ColorText(lang+": ", colorCode) + strconv.Itoa(count) + " file(s), " + fmt.Sprintf("%d", int64(float64(count) / float64(total) * 100)) + "%"
+		line := "  " + ColorText(lang+": ", colorCode) + strconv.Itoa(count) + " file(s), " + fmt.Sprintf("%d", int64(float64(count) / float64(total) * 100)) + "%"
 		res = append(res, line)
 	}
 	return res, nil
@@ -101,8 +100,8 @@ func addFilesAndLines(root string, colorCode int) ([]string, error) {
 		return make([]string, 0), err
 	}
 	res := make([]string, 2)
-	res[0] = utils.ColorText("Number of lines: ", colorCode) + strconv.Itoa(lineCount)
-	res[1] = utils.ColorText("Number of files: ", colorCode) + strconv.Itoa(fileCount)
+	res[0] = Format("Lines", lineCount, colorCode)
+	res[1] = Format("Files", fileCount, colorCode)
 	return res, nil
 }
 
@@ -143,7 +142,7 @@ func countSize(root string, colorCode int) ([]string, error ) {
 	if err != nil {
 		return make([]string, 0), err
 	}
-	return []string{utils.ColorText("Size: ", colorCode) + strconv.Itoa(int(size / 1024)) + "K" }, nil
+	return []string{Format("Size", strconv.Itoa(int(size / 1024)) + "K", colorCode)}, nil
 }
 
 func countFilesAndLines(root string) (int, int, error) {
